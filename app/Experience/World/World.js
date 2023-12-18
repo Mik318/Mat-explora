@@ -36,7 +36,7 @@ export default class World extends EventEmitter {
     setWorld() {
         this.whiterun = new Whiterun();
         this.player.setInteractionObjects(
-            this.whiterun.interactions.interactions
+            this.whiterun.board.board
         );
 
         // this.interior = new Interior();

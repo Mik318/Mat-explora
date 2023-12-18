@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import Experience from "../../../Experience.js";
 
-export default class Board {
+export default class BoardMath01 {
     constructor() {
         this.experience = new Experience();
         this.scene = this.experience.scene;
@@ -12,20 +12,20 @@ export default class Board {
     }
 
     init() {
-        this.board = this.resources.items.whiterun.board.scene;
-        this.board_texture = this.resources.items.whiterun.board_texture;
+        this.boardmath01 = this.resources.items.whiterun.boardmath01.scene;
+        this.board_texture_math01 = this.resources.items.whiterun.board_texture_math01;
     }
 
     setMaterials() {
-        this.board_texture.flipY = false;
-        this.board_texture.encoding = THREE.sRGBEncoding;
+        this.board_texture_math01.flipY = false;
+        this.board_texture_math01.encoding = THREE.sRGBEncoding;
 
-        this.board.children.find((child) => {
+        this.boardmath01.children.find((child) => {
             child.material = new THREE.MeshBasicMaterial({
-                map: this.board_texture
+                map: this.board_texture_math01
             });
         })
 
-        this.scene.add(this.board);
+        this.scene.add(this.boardmath01);
     }
 }

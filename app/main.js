@@ -3,29 +3,10 @@ import Experience from "./Experience/Experience.js";
 import Interface from "./Interface/Interface.js";
 
 class Main {
-    content = document.getElementsByClassName('router')[0];
-
     constructor() {
-        console.log('constructor init');
-        const nuevaURL = window.location.pathname;
-        console.log('Cambio de ruta detectado: ' + nuevaURL);
-        const menu = document.getElementsByClassName('menu-container');
-        if (nuevaURL === '/') {
-            this.createInterface();
-            this.createExperience();
-
-            // Agregar un event listener al botón para cerrar el menú
-            const closeButton = document.querySelector(".close-button");
-            if (closeButton) {
-                closeButton.addEventListener("click", this.toggleMenu.bind(this));
-            }
-
-            // Agregar un event listener para la tecla "M"
-            document.addEventListener("keydown", this.handleKeyPress.bind(this));
-        } else {
-            menu[0].style.display = 'none';
-            this.loadPage('')
-        }
+        this.createInterface();
+        this.createExperience();
+        this.addEventListeners();
     }
 
     createInterface() {
@@ -41,46 +22,32 @@ class Main {
             this.interface.message.setCrosshair(objectName);
             this.interface.message.setMessage(objectName);
         });
+
+        // // Seleccionar la etiqueta de audio
+        // setTimeout(() => {
+        //     const audioElement = document.querySelector('audio');
+        //     // Iniciar la reproducción automáticamente después de cargar la página
+        //     document.addEventListener('DOMContentLoaded', function () {
+        //         audioElement.play();
+        //     });
+        // }, 5000)
     }
 
-    toggleMenu() {
-        const menuContainers = document.getElementsByClassName('menu-container');
-        if (menuContainers.length > 0) {
-            const menuContainer = menuContainers[0];
-            menuContainer.style.display = 'none';
-        }
-    }
-
-    handleKeyPress(event) {
-        if (event.key === "m" || event.key === "M") {
-            // Presionó la tecla "M" o "m", alternar la visibilidad del menú
-            const menuContainers = document.getElementsByClassName('menu-container');
-            if (menuContainers.length > 0) {
-                const menuContainer = menuContainers[0];
-                if (menuContainer.style.display === 'none' || menuContainer.style.display === '') {
-                    menuContainer.style.display = 'block'; // Mostrar el menú
+    addEventListeners() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const audioElement = document.getElementById('audioPlayer');
+            const playButton = document.getElementsByClassName('botón');
+            console.log(playButton);
+            // Add an event listener for the play button
+            playButton[0].addEventListener('click', () => {
+                // Toggle between play and pause icons
+                if (audioElement.paused) {
+                    audioElement.play();
                 } else {
-                    menuContainer.style.display = 'none'; // Ocultar el menú
+                    audioElement.pause();
                 }
-            }
-        }
-    }
-
-    handleButtonVideo(event) {
-
-    }
-
-    loadPage(route) {
-        console.log(route);
-        fetch(`/${route}.html`)
-            .then(response => response.text())
-            .then(content => {
-                console.log(content);
-                this.content.innerHTML = content;
-            })
-            .catch(error => {
-                console.error(`Error cargando página: ${error}`);
             });
+        });
     }
 }
 

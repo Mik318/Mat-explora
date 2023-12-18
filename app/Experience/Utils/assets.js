@@ -28,9 +28,59 @@ export default [
                     path: "/models/walls.glb",
                 },
                 {
+                    name: "board",
+                    type: "glbModel",
+                    path: "/models/boardHiro.glb",
+                },
+                {
+                    name: "boardmath01",
+                    type: "glbModel",
+                    path: "/models/boardMath01.glb",
+                },
+                {
+                    name: "boardmath02",
+                    type: "glbModel",
+                    path: "/models/boardMath02.glb",
+                },
+                {
+                    name: "tree",
+                    type: "glbModel",
+                    path: "/models/tree.glb",
+                },
+                {
+                    name: "caballero",
+                    type: "glbModel",
+                    path: "/models/caballero.glb",
+                },
+                {
+                    name: "board_texture",
+                    type: "imageTexture",
+                    path: "/textures/textura.png",
+                },
+                {
+                    name: "board_texture_math01",
+                    type: "imageTexture",
+                    path: "/textures/texturaVideo2.png",
+                },
+                {
+                    name: "board_texture_math02",
+                    type: "imageTexture",
+                    path: "/textures/texturaVideo3.png",
+                },
+                {
+                    name: "tree_texture",
+                    type: "imageTexture",
+                    path: "/textures/tree.webp",
+                },
+                {
+                    name: "caballero_texture",
+                    type: "imageTexture",
+                    path: "/textures/caballero.png",
+                },
+                {
                     name: "buildings_texture",
                     type: "imageTexture",
-                    path: "/textures/buildings.webp",
+                    path: "/textures/buildings_test.png",
                 },
                 {
                     name: "items_texture",
@@ -45,7 +95,7 @@ export default [
                 {
                     name: "walls_texture",
                     type: "imageTexture",
-                    path: "/textures/walls_baked.webp",
+                    path: "/textures/walls_baked_test.png",
                 },
                 {
                     name: "skyBoxTexture",
@@ -58,7 +108,7 @@ export default [
                         "/textures/skybox/pz.webp",
                         "/textures/skybox/nz.webp",
                     ],
-                },
+                }
             ],
         },
         castleInterior: {
@@ -78,6 +128,11 @@ export default [
                     type: "imageTexture",
                     path: "/textures/interior_baked.webp",
                 },
+                {
+                    name: "castle_texture_test",
+                    type: "imageTexture",
+                    path: "/textures/interior_baked_test.png",
+                }
             ],
         },
     },

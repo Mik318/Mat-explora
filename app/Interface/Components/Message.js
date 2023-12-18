@@ -2,7 +2,6 @@ export default class Message {
     constructor(elements, key) {
         this.elements = elements;
         this.key = key;
-        console.log(this.elements);
     }
 
     setCrosshair(message) {
@@ -20,7 +19,11 @@ export default class Message {
             this.elements.message.innerHTML = `Go through door`;
         } else if (newMsg.includes("sign")) {
             this.elements.message.innerHTML = `Read`;
-        } else if (newMsg.includes("teleporter")) {
+        } 
+        // else if (newMsg.includes("board")) {
+        //     this.elements.message.innerHTML = `Read`;
+        // } 
+        else if (newMsg.includes("teleporter")) {
             this.elements.message.innerHTML = `Travel`;
         } else {
             this.elements.message.innerHTML = "";

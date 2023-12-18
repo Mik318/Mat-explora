@@ -25,6 +25,8 @@ export default class Interactions {
             child.material = new THREE.MeshBasicMaterial({
                 // map: this.interactions_texture,
                 color: 0xff0000,
+                transparent: true,
+                opacity: 0.3
             });
         });
 
