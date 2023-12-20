@@ -43,6 +43,16 @@ export default [
                     path: "/models/boardMath02.glb",
                 },
                 {
+                    name: "boardmath03",
+                    type: "glbModel",
+                    path: "/models/cuartomarcador.glb",
+                },
+                {
+                    name: "boardmath04",
+                    type: "glbModel",
+                    path: "/models/quintomarcador.glb",
+                },
+                {
                     name: "tree",
                     type: "glbModel",
                     path: "/models/tree.glb",
@@ -66,6 +76,16 @@ export default [
                     name: "board_texture_math02",
                     type: "imageTexture",
                     path: "/textures/texturaVideo3.png",
+                },
+                {
+                    name: "board_texture_math03",
+                    type: "imageTexture",
+                    path: "/textures/texturaVideo4.png",
+                },
+                {
+                    name: "board_texture_math04",
+                    type: "imageTexture",
+                    path: "/textures/texturaVideo5.png",
                 },
                 {
                     name: "tree_texture",

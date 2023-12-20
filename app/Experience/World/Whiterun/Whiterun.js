@@ -9,6 +9,8 @@ import TreeChrismas from "./Components/TreeChrismas.js";
 import BoardMath01 from "./Components/BoardMath01.js";
 import BoardMath02 from "./Components/BoardMath02.js";
 import Caballero from "./Components/Caballero.js";
+import BoardMath03 from "./Components/BoardMath03.js";
+import BoardMath04 from "./Components/BoardMath04.js";
 
 export default class WhiteRun {
     constructor() {
@@ -23,6 +25,10 @@ export default class WhiteRun {
         this.boardmath02 = new BoardMath02();
         this.treeChrismas = new TreeChrismas();
         this.Caballero = new Caballero();
+        this.BoardMath03 = new BoardMath03();
+        this.BoardMath04 = new BoardMath04();
+
+        // this.Caballero.animate();
     }
 
     resize() {}
