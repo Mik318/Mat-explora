@@ -54,7 +54,82 @@ export default class Player extends EventEmitter {
 
     initControls() {
         this.actions = {};
+        // Obtén referencias a los elementos
+        const upButton = document.getElementById('upButton');
+        const leftButton = document.getElementById('leftButton');
+        const rightButton = document.getElementById('rightButton');
+        const downButton = document.getElementById('downButton');
+
+        // Agrega escuchadores de eventos para cada botón
+        upButton.addEventListener('mousedown', () => this.onButtonDown('up'));
+        leftButton.addEventListener('mousedown', () => this.onButtonDown('left'));
+        rightButton.addEventListener('mousedown', () => this.onButtonDown('right'));
+        downButton.addEventListener('mousedown', () => this.onButtonDown('down'));
+
+        // Agrega escuchadores de eventos para soltar los botones
+        document.addEventListener('mouseup', () => this.onButtonUp());
+        document.addEventListener('mouseleave', () => this.onButtonUp());
+
+        // Agrega escuchadores de eventos táctiles para el movimiento de la cámara
+        document.addEventListener('touchstart', this.onTouchStart);
+        document.addEventListener('touchmove', this.onTouchMove);
+        document.addEventListener('touchend', this.onTouchEnd);
     }
+
+    onButtonDown(direction) {
+        // Realiza acciones al presionar el botón
+        switch (direction) {
+            case 'up':
+                this.actions.forward = true;
+                break;
+            case 'left':
+                this.actions.left = true;
+                break;
+            case 'right':
+                this.actions.right = true;
+                break;
+            case 'down':
+                this.actions.backward = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+    onButtonUp() {
+        // Realiza acciones al soltar cualquier botón
+        this.actions.forward = false;
+        this.actions.left = false;
+        this.actions.right = false;
+        this.actions.backward = false;
+    }
+
+    onTouchMove = (e) => {
+        if (e.touches.length === 1) {
+            // Calcula la diferencia de posición entre el inicio y el movimiento actual
+            const deltaX = e.touches[0].clientX - this.touchStartX;
+            const deltaY = e.touches[0].clientY - this.touchStartY;
+
+            // Realiza acciones según el movimiento táctil
+            this.player.body.rotation.order = this.player.rotation.order;
+            this.player.body.rotation.x -= deltaY / 500;
+            this.player.body.rotation.y -= deltaX / 500;
+            this.player.body.rotation.x = THREE.MathUtils.clamp(
+                this.player.body.rotation.x,
+                -Math.PI / 2,
+                Math.PI / 2
+            );
+
+            // Actualiza las coordenadas de inicio para el próximo movimiento táctil
+            this.touchStartX = e.touches[0].clientX;
+            this.touchStartY = e.touches[0].clientY;
+        }
+    };
+
+    onTouchEnd = () => {
+        // Detecta el final del movimiento táctil
+        // Puedes realizar acciones adicionales si es necesario
+    };
 
     onDesktopPointerMove = (e) => {
         if (document.pointerLockElement !== document.body) return;
